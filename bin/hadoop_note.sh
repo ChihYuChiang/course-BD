@@ -4,10 +4,39 @@ Local (Red Hat)
 ------------------------------------------------------------------
 '''
 cd Downloads
+cd ..
+cd $HOME/Downloads
 ls
 
 #Examine file content (in CMD)
 more local.txt
+
+#Unzip file
+unzip -o big-data-2.zip
+
+#Execute file
+./setup.sh #The './' is necessary
+
+#Execute py function (file)
+./json_schema.py twitter.json | more #'|' is used to pipe the result
+
+#View image file
+#eog stands for Eye of Gnome and is a common image viewer on Linux systems
+eog Australia.jpg
+
+#Download file from web
+wget http://archive.apache.org/dist/lucene/java/5.5.0/lucene-5.5.0.tgz
+
+
+#--'tar' files
+#'tar' is a archive file (a file collection) in Linux
+#'tar.gz' and 'tar.bz2' is a compression of tar
+#The tar is most widely used command to create compressed archive files and that can be moved easily from one disk to another disk or machine to machine
+#Create 'tar' file
+tar cvzf MyImages-14-09-12.tgz /home/MyImages
+
+#Untar (and decompress) 'tar' file
+tar -xvf thumbnails-14-09-12.tar.gz
 
 
 
