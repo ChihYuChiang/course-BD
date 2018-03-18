@@ -54,6 +54,20 @@ GROUP BY drinker;
 MongoDB
 ------------------------------------------------------------------
 '''
+--#MongoDB shell
+--See the databases
+show dbs
+
+--Switch to specific db
+use dbname
+
+--See the collections (tables)
+show collections
+
+--Exit shell
+exit
+
+
 --#Basic operations
 --MongoDB is a collection of documents (with JSON structure)
 --collection = table in RMDB
@@ -76,14 +90,8 @@ db.Beers.find(
     {manf:1, _id:0}
 )
 
-
---#Distinct operation
---MongoDB operators
-SELECT DISTINCT beer, price FROM Sells WHERE price > 15
-db.Sells.distinct(
-    {price:{$gt:15}}, --$gt = greater than; $eq = equal; $gte; $in; $or; $not
-    {beer:1, price:1, _id:0}}
-)
+--Examine one data entry (doc)
+db.Users.findOne()
 
 
 --#MongDB use regular expression in partial comparison
@@ -189,6 +197,10 @@ db.Orders.aggregate([
 
 
 --#Text search (similar to Solr by Apache)
+--Index texts (optional, makes search faster)
+db.Users.createIndex({"tweet_text":"text"}) --"tweet_text is the field to create index"
+
+--Perform search
 db.Articles.aggregate([
     --Using 'search' function of 'text'
     {$match:{$text:{$search:"Hillary Democrat"}}},
@@ -213,16 +225,3 @@ db.Orders.aggregate([
         }
     }
 ])
-
-
-
-
-
-
-
-
-'''
-------------------------------------------------------------------
-Aerospike
-------------------------------------------------------------------
-'''
